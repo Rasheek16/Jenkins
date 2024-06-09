@@ -13,8 +13,8 @@ pipeline {
 				// sh "mvn --version"
 				echo "Build"
 				echo "$PATH"
-				ss 'docker --version'
-				sh 'mvn --version'
+				ss "docker --version"
+				sh "mvn --version"
 			}
 		}
 		stage('Test'){
