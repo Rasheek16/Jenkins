@@ -8,25 +8,22 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Compile') {
             steps {
-                echo "Build"
-                echo "${env.PATH}"
-                sh "docker --version"
-                sh "mvn --version"
+             sh "mvn clean compile"   
             }
         }
 
         stage('Test') {
             steps {
-                echo "Test"
+                sh "mvn test"
                 // Add your test commands here
             }
         }
 
         stage('Integration') {
             steps {
-                echo "Integration"
+               sh "mvn failsafe:integration-test failsafe:verify"
                 // Add your integration test commands here
             }
         }
